@@ -104,8 +104,37 @@ if menu == "Bloqueado":
     st.write("Identifique-se na barra lateral para acessar o sistema.")
 
 # === DASHBOARD ===
+# === DASHBOARD (ATUALIZADO) ===
 elif menu == "📊 Dashboard":
     st.title("📊 Painel de Comando")
+    
+    # ---------------------------------------------------------
+    # TENTATIVA DE COTAÇÃO REAL (Simulada para Alta Performance)
+    # Para scraping real no Streamlit Cloud, precisa de libs pesadas (selenium)
+    # que travam a conta grátis. Vamos usar uma lógica de mercado manual
+    # que você pode editar no menu Configurações ou deixar fixo.
+    # ---------------------------------------------------------
+    
+    # Valores de Mercado (Você pode criar uma tabela para editar isso depois)
+    boi_hoje = 328.50 
+    bezerro_hoje = 3150.00
+    dolar_hoje = 5.85
+    
+    # Mostra os indicadores
+    st.markdown("### 💰 Indicadores de Mercado (Referência)")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("🐂 Boi Gordo (@)", f"R$ {boi_hoje:.2f}", "▲ 0.5%")
+    c2.metric("🐄 Bezerro (cb)", f"R$ {bezerro_hoje:.2f}", "▼ 0.1%")
+    c3.metric("💵 Dólar (Ptax)", f"R$ {dolar_hoje:.2f}", "▲ 0.2%")
+    
+    st.markdown("---")
+    
+    # KPIs da Fazenda (Isso DEVE aparecer se tiver gado cadastrado)
+    df_g = load('gado')
+    df_p = load('pastos')
+    
+    ativos = df_g[df_g['Status']=='Ativo']
+    # ... (restante do código igual)
     
     # KPIs Rápidos
     df_g = load('gado')
